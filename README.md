@@ -4,11 +4,11 @@ FiFi is a File Fixer library that can be used to make consistent Line Endings, F
 
 #### Usage
 
-```
+```c#
             //First define the list of files that you want to fix
             var fileSources = FileSources.New()
                 .Add(directory, "*.cs")
-                .Add("/users/sdha/file.xml)
+                .Add("/users/sdha/file.xml")
                 .Add(new[] {"/users/duck/boo.bar","/opt/exe/foo.sh"});
 
             //Now configure FiFi with the list of fixers to run on the files mentioned above
@@ -17,4 +17,5 @@ FiFi is a File Fixer library that can be used to make consistent Line Endings, F
                 .FixInvalidCharacters()
                 .FixLineEndings(LineEndingMode.Windows)
                 .ForFiles(fileSources);
+
 ```
