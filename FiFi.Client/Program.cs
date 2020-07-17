@@ -8,7 +8,7 @@ namespace FiFi.Client
         static void Main(string[] args)
         {
             var fileSources = FileSources.New()
-                .Add(args[1], "*.sql");
+                .Add(args[0], "*.sql");
 
             FiFiRunner.New()
                 .FixEncoding(Encoding.UTF8)
