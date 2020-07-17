@@ -19,3 +19,5 @@ FiFi is a File Fixer library that can be used to make consistent Line Endings, F
                 .ForFiles(fileSources);
 
 ```
+
+The above code fragment will take the list of files and run the fixers on those files. The fixers configured in the above file are Encoding, InvalidChars and LineEndings. You can ignore a fixer by not calling it (ignoring it)
