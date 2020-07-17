@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiFi.Lib", "FiFi.Lib\FiFi.Lib.csproj", "{6D2C50A8-A06F-4C11-B9E0-640F83C22668}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiFi.Client", "FiFi.Client\FiFi.Client.csproj", "{FBC85529-9833-4A52-B7A3-1E873B3483E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D2C50A8-A06F-4C11-B9E0-640F83C22668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D2C50A8-A06F-4C11-B9E0-640F83C22668}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D2C50A8-A06F-4C11-B9E0-640F83C22668}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D2C50A8-A06F-4C11-B9E0-640F83C22668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBC85529-9833-4A52-B7A3-1E873B3483E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC85529-9833-4A52-B7A3-1E873B3483E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC85529-9833-4A52-B7A3-1E873B3483E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC85529-9833-4A52-B7A3-1E873B3483E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

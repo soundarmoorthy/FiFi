@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageId>com.soundararajan.FiFi</PackageId>
+    <PackageVersion>0.1</PackageVersion>
+    <Authors>Soundararajan Dhakshinamoorthy</Authors>
+    <Description>FiFi is a File Fixer library that can be used to make consistent Line Endings, File Encoding and Remove Invalid ASCII characters. It provides an easy to use Fluent API's that can be easily setup and called in couple of lines of code. FiFi is based on .NET standard and can run in Windows, Mac, and Unix.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+</Project>
