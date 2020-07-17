@@ -23,7 +23,7 @@ namespace FiFi
         int index = 0;
         public bool MoveNext()
         {
-            if (index++ < files.Count())
+            if (index++ < files.Count() - 1)
                 return true;
 
             return false;

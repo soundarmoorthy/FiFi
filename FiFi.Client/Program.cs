@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 
 namespace FiFi.Client
@@ -7,14 +8,26 @@ namespace FiFi.Client
     {
         static void Main(string[] args)
         {
-            var fileSources = FileSources.New()
-                .Add(args[0], "*.sql");
+            string dir = string.Empty;
+            if (args.Length == 0)
+            {
+                dir = "/Users/sdhaksh5/trunk/Application/Loader/Loader.Shell/";
+                Console.WriteLine("Enter directory path");
+            }
+            if (!Directory.Exists(dir))
+                Console.WriteLine("Directory does't exist");
 
-            FiFiRunner.New()
+            var fileSources = FileSources.New()
+                .Add(dir, "*.sql");
+
+            var result = FiFiRunner.New()
                 .FixEncoding(Encoding.UTF8)
                 .FixInvalidCharacters()
                 .FixLineEndings(LineEndingMode.Windows)
-                .ForFiles(fileSources);
+                .ForFiles(fileSources)
+                .Run();
+
+            Console.WriteLine(result.ConsoleResult);
         }
     }
 }
