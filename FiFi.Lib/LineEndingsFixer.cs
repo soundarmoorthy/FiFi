@@ -9,54 +9,56 @@ namespace FiFi
     internal class LineEndingsFixer : IFixer
     {
 
-        private readonly LineEndingMode s_lineEndingMode;
+        private readonly LineEndingMode lineEndingMode;
 
         private readonly Dictionary<LineEndingMode, string>
-            s_lineEndingsMap = new Dictionary<LineEndingMode, string>();
+            lineEndingsMap = new Dictionary<LineEndingMode, string>();
 
-        public string Name => "Line Endings";
+
         public LineEndingsFixer(LineEndingMode target)
         {
-            s_lineEndingsMap[LineEndingMode.Windows] = "\r\n";
-            s_lineEndingsMap[LineEndingMode.Mac] = "\r";
-            s_lineEndingsMap[LineEndingMode.Unix] = "\n";
+            lineEndingsMap[LineEndingMode.Windows] = "\r\n";
+            lineEndingsMap[LineEndingMode.Mac] = "\r";
+            lineEndingsMap[LineEndingMode.Unix] = "\n"; lineEndingMode = target;
 
-            s_lineEndingMode = target;
+            Info = new FixerInfo();
+            Info.Name = "Line Endings Fixer";
         }
 
-        private bool hasIssues = false;
-        public bool HasIssues()
-        {
-            return hasIssues;
-        }
-
-        private bool success = false;
-        public bool Success()
-        {
-            return success;
-        }
+        public FixerInfo Info { get; }
 
         public void Fix(string fullPathToFile)
         {
-            SetScriptLineEndings(fullPathToFile, s_lineEndingMode);
+            SetScriptLineEndings(fullPathToFile, lineEndingMode);
         }
 
-        private void SetScriptLineEndings(string scriptPath, LineEndingMode mode)
+        private void SetScriptLineEndings(string scriptPath,
+            LineEndingMode mode)
         {
-            var scriptContents = File.ReadAllText(scriptPath);
-            var unifiedContents = Regex.Replace(scriptContents,
-                @"\r\n|\n\r|\n|\r", s_lineEndingsMap[mode]);
-
-            if (scriptContents.Equals(unifiedContents,
-                StringComparison.CurrentCultureIgnoreCase))
+            try
             {
-                success = true;
-                return;
-            }
+                var scriptContents = File.ReadAllText(scriptPath);
+                var unifiedContents = Regex.Replace(scriptContents,
+                    @"\r\n|\n\r|\n|\r", lineEndingsMap[mode]);
 
-            hasIssues = false;
-            File.WriteAllText(scriptPath, unifiedContents);
-            success = true;
+                if (scriptContents.Equals(unifiedContents,
+                    StringComparison.CurrentCultureIgnoreCase))
+                {
+                    Info.HasIssues = false;
+                    Info.Success = true;
+                }
+                else
+                {
+                    Info.HasIssues = true;
+                    File.WriteAllText(scriptPath, unifiedContents);
+                    Info.Success = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Info.Success = false;
+                Info.Exception = ex;
+            }
         }
     }
 }

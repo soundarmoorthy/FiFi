@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiFi.Lib", "FiFi.Lib\FiFi.L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiFi.Client", "FiFi.Client\FiFi.Client.csproj", "{FBC85529-9833-4A52-B7A3-1E873B3483E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiFi.Lib.Tests", "FiFi.Lib.Tests\FiFi.Lib.Tests.csproj", "{470532AF-ACD1-4EDB-9A13-770EC7DA0E2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,27 @@ Global
 		{FBC85529-9833-4A52-B7A3-1E873B3483E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBC85529-9833-4A52-B7A3-1E873B3483E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBC85529-9833-4A52-B7A3-1E873B3483E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{470532AF-ACD1-4EDB-9A13-770EC7DA0E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{470532AF-ACD1-4EDB-9A13-770EC7DA0E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{470532AF-ACD1-4EDB-9A13-770EC7DA0E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{470532AF-ACD1-4EDB-9A13-770EC7DA0E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.scope = text/x-csharp
+		$0.TextStylePolicy = $4
+		$4.FileWidth = 80
+		$4.TabsToSpaces = True
+		$4.scope = text/plain
+		$0.StandardHeader = $5
+		$0.VersionControlPolicy = $6
+		version = 0.3.0
+		description = FiFi is a File Fixer library that can be used to make consistent Line Endings, File Encoding and Remove Invalid ASCII characters. It provides an easy to use Fluent API's that can be easily setup and called in couple of lines of code. FiFi is based on .NET standard and can run in Windows, Mac, and Unix.
 	EndGlobalSection
 EndGlobal

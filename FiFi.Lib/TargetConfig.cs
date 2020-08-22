@@ -13,5 +13,15 @@ namespace FiFi
         internal TargetConfig()
         {
         }
+
+        internal static TargetConfig Default()
+        {
+            return new TargetConfig()
+            {
+                LineEnding = LineEndingMode.Mac,
+                Encoding = Encoding.UTF8,
+                RemoveNonprintableChars = true
+            };
+        }
     }
 }

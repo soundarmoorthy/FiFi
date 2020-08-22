@@ -1,34 +1,51 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace FiFi
 {
     internal static class FiFiRunnerFacade
     {
-        internal static FiFiResult Run(TargetConfig config, FileSources sources)
+        internal static FiFiResult Run(
+            TargetConfig config,
+            FileSources sources)
         {
-            List<IFixer> fixers = GetFixers(config);
+            var items = new List<FiFiFileResult>();
 
-            var items = new Dictionary<string, List<IFixer>>();
+            var fixers = GetFixers(config);
             foreach (var file in sources.All())
             {
+                if (Not.Processable(file, out Exception ex))
+                {
+                    continue;
+                }
+
                 foreach (var fixer in fixers)
                 {
                     fixer.Fix(file);
                 }
-                items.Add(file, fixers);
+                items.Add(new FiFiFileResult(file, Info(fixers)));
             }
-
             return Results(items);
         }
 
-        private static FiFiResult Results(Dictionary<string, List<IFixer>> items)
+        private static IEnumerable<FixerInfo> Info(IEnumerable<IFixer> fixers)
         {
-            var result = RunBook.Console(items);
-            return new FiFiResult() { ConsoleResult = result };
+            return fixers.Select(x => x.Info);
         }
 
-        private static List<IFixer> GetFixers(TargetConfig config)
+        private static FiFiResult Results
+            (IEnumerable<FiFiFileResult> items)
+        {
+            var result = RunBook.Console(items);
+            return new FiFiResult()
+            {
+                ConsoleResult = result,
+                FileResults = items
+            };
+        }
+
+        internal static IEnumerable<IFixer> GetFixers(TargetConfig config)
         {
             List<IFixer> fixers = new List<IFixer>();
 
@@ -40,7 +57,8 @@ namespace FiFi
 
             if (config.Encoding != null)
                 fixers.Add(new FileEncodingFixer(config.Encoding));
-            return fixers;
+
+            return fixers.AsEnumerable();
         }
     }
 }

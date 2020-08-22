@@ -5,19 +5,14 @@ namespace FiFi
 {
     internal class InvalidCharsFixer : IFixer
     {
-        private bool hasIssues = false;
-        public bool HasIssues()
-        {
-            return hasIssues;
-        }
 
-        private bool success = false;
-        public bool Success()
-        {
-            return success;
-        }
+        public FixerInfo Info { get; }
 
-        public string Name => "Invalid Chars";
+        public InvalidCharsFixer()
+        {
+            Info = new FixerInfo();
+            Info.Name = Consts.InvalidCharsFixer_Tag;
+        }
 
         public void Fix(string fullPathToFile)
         {
@@ -25,7 +20,12 @@ namespace FiFi
             try
             {
                 FixInternal(fullPathToFile, ms);
-                success = true;
+                Info.Success = true;
+            }
+            catch (Exception ex)
+            {
+                Info.Success = false;
+                Info.Exception = ex;
             }
             finally
             {
@@ -35,19 +35,29 @@ namespace FiFi
 
         private void FixInternal(string fullPathToFile, MemoryStream ms)
         {
-            foreach (var ch in File.ReadAllBytes(fullPathToFile))
+            try
             {
-                if (ch > 127 && ch <= 255)
+                foreach (var ch in File.ReadAllBytes(fullPathToFile))
                 {
-                    hasIssues = true;
-                    continue;
+                    if (ch > 127 && ch <= 255)
+                    {
+                        Info.HasIssues = true;
+                        continue;
+                    }
+                    ms.WriteByte(ch);
                 }
-                ms.WriteByte(ch);
-            }
 
-            if (hasIssues)
+                if (Info.HasIssues)
+                {
+                    File.WriteAllBytes(fullPathToFile, ms.ToArray());
+                }
+
+                Info.Success = true;
+            }
+            catch (Exception ex)
             {
-                File.WriteAllBytes(fullPathToFile, ms.ToArray());
+                Info.Exception = ex;
+                Info.Success = false;
             }
         }
     }
