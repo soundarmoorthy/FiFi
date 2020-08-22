@@ -31,6 +31,7 @@ namespace FiFi.Client
 
             var failures = result.Failures();
 
+
             Console.WriteLine(result.ConsoleResult);
         }
     }
