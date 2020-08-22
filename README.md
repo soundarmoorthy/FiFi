@@ -38,7 +38,7 @@ It provides an easy to use Fluent API's that can be easily setup and called in c
 
 ```
 
-The above code fragment will take the list of files and run the fixers on those files. The fixers configured in the above file are Encoding, InvalidChars and LineEndings. You can ignore a fixer by not calling it (ignoring it)
+The above code fragment will take the list of files and run the fixers on those files. The fixers configured in the above file are Encoding, InvalidChars and LineEndings. You can ignore a fixer by not calling it (ignoring it). When complete, you can enumerate through the results and see what succeeded and failed , exceptions etc.,
 
 #### Disclaimer
 This is a community package and i don't hold any accountability for the code, it's success and failures. Use it with your own discreation. I don't mind if oyou fork and use it by yourself.
