@@ -1,6 +1,11 @@
 
 #### Introduction
-FiFi is a File Fixer library that can be used to make consistent Line Endings, File Encoding and Remove Invalid ASCII characters. It provides an easy to use Fluent API's that can be easily setup and called in couple of lines of code. FiFi is based on .NET standard and can run in Windows, Mac, and Unix.
+FiFi is a File Fixer library that can be used to fix files for the following
+* consistent Line Endings, 
+* File Encoding 
+* Remove Invalid ASCII characters. 
+
+It provides an easy to use Fluent API's that can be easily setup and called in couple of lines of code. FiFi is based on .NET standard 2.1 and can run in .NET Core 3.0 and .NET Core 4.6.1 or above
 
 #### Usage
 

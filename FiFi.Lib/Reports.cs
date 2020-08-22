@@ -1,5 +1,4 @@
 ﻿using System;
-using Newtonsoft.Json;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
@@ -27,22 +26,22 @@ namespace FiFi
             files.Add(file);
         }
 
-        private const int oddWidth = 15;
+        private const int oddWidth = 20;
         private const int pad = oddWidth / 2;
 
         internal static string Console(
-            Dictionary<string, List<IFixer>> runMap)
+            IEnumerable<FiFiFileResult> results)
         {
-            if (runMap == null)
+            if (results == null || !results.Any())
                 return "Nothing to show";
 
             StringBuilder builder = new StringBuilder();
             StringBuilder header = new StringBuilder();
-            foreach (var item in runMap.ElementAt(0).Value)
+            foreach (var item in results.ElementAt(0).Fixers)
                 header.Append(GetName(item.Name));
 
             header.Append(Environment.NewLine);
-            foreach (var item in runMap.ElementAt(0).Value)
+            foreach (var item in results.ElementAt(0).Fixers)
                 header.Append($"{"Issues",pad * 2}{"Fixed",pad * 2}");
 
             header.Append("FileName");
@@ -50,14 +49,14 @@ namespace FiFi
             builder.Append(header.ToString());
             builder.Append(Environment.NewLine);
 
-            foreach (var item in runMap)
+            foreach (var item in results)
             {
-                foreach (var v in item.Value)
+                foreach (var v in item.Fixers)
                 {
-                    builder.Append(Format(v.HasIssues()));
-                    builder.Append(Format(v.Success()));
+                    builder.Append(Format(v.HasIssues));
+                    builder.Append(Format(v.Success));
                 }
-                builder.Append(item.Key);
+                builder.Append(item.FileName);
                 builder.Append(Environment.NewLine);
             }
 
@@ -85,7 +84,7 @@ namespace FiFi
             if (runMap == null)
                 return "{}";
 
-            return JsonConvert.SerializeObject(runMap);
+            return string.Empty;
         }
     }
 }
