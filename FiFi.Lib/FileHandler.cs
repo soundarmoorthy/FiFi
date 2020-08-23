@@ -32,6 +32,16 @@ namespace FiFi
             return this;
         }
 
+        /// <summary>
+        /// Adds all the files inside a given directory to the file source. If
+        /// the filter is empty or null
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <param name="filter">To include all files pass "*.*".For
+        /// more information please refer https://docs.microsoft.com/en-us
+        ///dotnet/api/system.io.directory.enumeratefiles?view=netcore-3.1
+        ///</param>
+        /// <returns></returns>
         public FileSources Add(string dir, string filter)
         {
             var files = FilteredFiles(dir, filter);

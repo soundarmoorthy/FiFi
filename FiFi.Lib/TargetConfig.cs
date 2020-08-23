@@ -14,7 +14,7 @@ namespace FiFi
         {
         }
 
-        internal static TargetConfig Default()
+        internal static TargetConfig Development()
         {
             return new TargetConfig()
             {

@@ -3,7 +3,7 @@ using System.Linq;
 using System.IO;
 namespace FiFi.Lib.Tests
 {
-    public static class TestData
+    internal static class TestData
     {
         public static FiFiFileResult SuccessFileResult()
         {
@@ -31,6 +31,21 @@ namespace FiFi.Lib.Tests
                 FileResults = new[] { TestData.SuccessFileResult() }
             };
             return result;
+        }
+
+        public static FiFiRunner RunnerWithSingleFile()
+        {
+            var file = Path.GetTempFileName();
+            var files = FileSources.New().Add(file);
+            var runner = FiFiRunner.New().ForFiles(files);
+            return runner;
+        }
+
+        public static FiFiRunner RunnerWithNoFiles()
+        {
+            var runner = FiFiRunner.New();
+            runner.ForFiles(FileSources.New());
+            return runner;
         }
     }
 
