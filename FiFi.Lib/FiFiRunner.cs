@@ -3,10 +3,28 @@ using System.Text;
 
 namespace FiFi
 {
-    public class FiFiRunner
+    public sealed class FiFiRunner
     {
         private TargetConfig config;
         private FileSources files;
+
+        /// <summary>
+        /// For Testing purposes and is marked as internal explicitly 
+        /// </summary>
+        /// <returns></returns>
+        internal TargetConfig GetConfig()
+        {
+            return config;
+        }
+
+        /// <summary>
+        /// For Testing purposes and is marked as internal explicitly 
+        /// </summary>
+        /// <returns></returns>
+        internal FileSources GetFiles()
+        {
+            return files;
+        }
 
         private FiFiRunner()
         {

@@ -17,4 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FiFi.Lib\FiFi.Lib.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
 </Project>
