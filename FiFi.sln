@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiFi.Lib", "FiFi.Lib\FiFi.L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiFi.Client", "FiFi.Client\FiFi.Client.csproj", "{FBC85529-9833-4A52-B7A3-1E873B3483E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiFi.Lib.Tests", "FiFi.Lib.Tests\FiFi.Lib.Tests.csproj", "{470532AF-ACD1-4EDB-9A13-770EC7DA0E2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiFi.Lib.Tests", "FiFi.Lib.Tests\FiFi.Lib.Tests.csproj", "{05CACB77-77A2-411E-A0E7-01376AEA56C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,10 @@ Global
 		{FBC85529-9833-4A52-B7A3-1E873B3483E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBC85529-9833-4A52-B7A3-1E873B3483E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBC85529-9833-4A52-B7A3-1E873B3483E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{470532AF-ACD1-4EDB-9A13-770EC7DA0E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{470532AF-ACD1-4EDB-9A13-770EC7DA0E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{470532AF-ACD1-4EDB-9A13-770EC7DA0E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{470532AF-ACD1-4EDB-9A13-770EC7DA0E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05CACB77-77A2-411E-A0E7-01376AEA56C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05CACB77-77A2-411E-A0E7-01376AEA56C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05CACB77-77A2-411E-A0E7-01376AEA56C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05CACB77-77A2-411E-A0E7-01376AEA56C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
