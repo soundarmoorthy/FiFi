@@ -40,5 +40,24 @@ It provides an easy to use Fluent API's that can be easily setup and called in c
 
 The above code fragment will take the list of files and run the fixers on those files. The fixers configured in the above file are Encoding, InvalidChars and LineEndings. You can ignore a fixer by not calling it (ignoring it)
 
+#### Functionality Overview
+FiFi is originally written to fix the issues with version controlled code bases, where the source code has 
+1. Multiple line endings 
+2. Multiple Encodings
+3. Invalid ASCII characters in source files. (when clipboarding things into strings / other literals)
+
+By default all the fixers are disabled. When configuring the Runner, each one of them can be enabled with appropriate configuration.
+
+##### Multiple Line endings
+The Line Ending Fixer need to be enabled by calling the `FixLineEndings` method on FiFiRunner. Refer the Usage section. The `FixLineEndings` method take a line ending as input and will try to convert all the input files to the given line ending. See the Support Matrix section for a list of supported input and output line ending formats.
+
+##### Multiple Encodings
+The Encoding Fixer need to be enabled by calling the `FixEncoding` method on FiFiRunner. Refer the Usage section. The `FixEncoding` method takes a target Encoding as input and will try to convert all the input files to the given encoding format. Remember that the content is not modified (or) parsed to support the target encoding. FiFi uses the native `System.IO.StreamWriter` API's to convert encodings. 
+
+##### Invalid Characters (ASCII characters)
+The Invalid chars fixer need to be enabled by calling the `FixInvalidCharacters()` method on FiFiRunner. This doesn't take any input, but when enabled it will remove all the characters other than ASCII 0 to 127. The input encoding is treated as is and only the characters are intrepreted. 
+** WARNING : As of now `FixInvalidCharacters` only supports ASCII characters
+
+
 #### Disclaimer
 This is a community package and i don't hold any accountability for the code, it's success and failures. Use it with your own discreation. I don't mind if oyou fork and use it by yourself.
